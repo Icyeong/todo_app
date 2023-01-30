@@ -4,7 +4,6 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { selected_todo, selected_todo_readOnly, todoList } from "../atoms/atoms";
 
 const TodoDetail = () => {
-    const API_URI = process.env.NEXT_PUBLIC_API_URI;
     const [todos, setTodos] = useRecoilState(todoList);
     const [todoInfo, setTodoInfo] = useRecoilState(selected_todo);
     const read_todoInfo = useRecoilValue(selected_todo_readOnly);
@@ -37,7 +36,7 @@ const TodoDetail = () => {
         // 기존 내용과 다른 경우에만 (변경사항 생김)
         if(read_todoInfo.title !== todoInfo.title || read_todoInfo.content !== todoInfo.content){
             // 변경 요청 보내기
-            axios.put(API_URI + `/todos/${todoInfo.id}`,todoInfo)
+            axios.put(`http://localhost:8080/todos/${todoInfo.id}`,todoInfo)
             .then((res) => {
                 setTodos(edited_todos);
             })

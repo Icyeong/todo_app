@@ -12,7 +12,6 @@ import CreateTodo from '../components/CreateTodo'
 
 
 export default function Home() {
-  const API_URI = process.env.NEXT_PUBLIC_API_URI;
   const [tokenState, setTokenState] = useState(false);
   const [todos, setTodos] = useRecoilState(todoList);
   const selectedTodo = useRecoilValue(selected_todo);
@@ -32,7 +31,7 @@ export default function Home() {
         router.push('/'); //루트 경로로 이동
         setTokenState(true);
         
-        axios.get(API_URI + '/todos') // todo list 목록 불러오기
+        axios.get('http://localhost:8080/todos') // todo list 목록 불러오기
         .then((res) => {
           setTodos(res.data.data);
         })

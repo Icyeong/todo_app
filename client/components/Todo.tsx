@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Todo = ({data}:any) => {
-    const API_URI = process.env.NEXT_PUBLIC_API_URI;
     const [todoInfo, setTodoInfo] = useRecoilState(selected_todo);
     const [todos, setTodos] = useRecoilState(todoList);
     const setImmutableData = useSetRecoilState(selected_todo_readOnly);
@@ -13,7 +12,7 @@ const Todo = ({data}:any) => {
 
     // Todo 데이터 불러오기
     const getTodoInfo = () => {
-        axios.get(API_URI + `/todos/${data.id}`)
+        axios.get(`http://localhost:8080/todos/${data.id}`)
         .then((res) => {
             setTodoInfo(res.data.data); //수정시 변경될 데이터
             setImmutableData(res.data.data); //수정시에도 유지될 원본데이터
@@ -25,7 +24,7 @@ const Todo = ({data}:any) => {
     const deleteTodo = () => {
         const filtered = todos.filter((todo:any) => todo.id !== data.id); //삭제데이터 제외된 todo 목록
 
-        axios.delete(API_URI + `/todos/${data.id}`) //삭제 요청
+        axios.delete(`http://localhost:8080/todos/${data.id}`) //삭제 요청
         .then((res) => {
             if(res.status === 200){
                 setTodos(filtered); //성공시 삭제된 todo 목록 저장

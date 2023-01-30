@@ -6,7 +6,6 @@ import { DefaultButton } from "../styles/auth.style";
 import AuthInput from "./AuthInput";
 
 const LoginForm = () => {
-    const API_URI = process.env.NEXT_PUBLIC_API_URI;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [email_message, setEmail_message] = useState('이메일을 입력해주세요.');
@@ -34,7 +33,7 @@ const LoginForm = () => {
 
         const fetchData = {email, password} //전송 데이터
 
-        axios.post(API_URI + '/users/login',fetchData) //로그인 요청
+        axios.post('http://localhost:8080/users/login',fetchData) //로그인 요청
         .then((res) => {
             if(res.status === 200){ //로그인 성공시
                 router.push('/'); //루트 경로로 이동

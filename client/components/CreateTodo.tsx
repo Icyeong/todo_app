@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const CreateTodo = () => {
-    const API_URI = process.env.NEXT_PUBLIC_API_URI;
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [todos, setTodos] = useRecoilState(todoList);
@@ -21,7 +20,7 @@ const CreateTodo = () => {
 
         const fetchData = {title, content} //생성 내용
         
-        axios.post(API_URI + '/todos', fetchData) //todo 생성하기
+        axios.post('http://localhost:8080/todos', fetchData) //todo 생성하기
         .then((res) => {
             setTodos([...todos, res.data.data])
             initInput();//input 초기화

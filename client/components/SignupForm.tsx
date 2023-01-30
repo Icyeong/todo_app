@@ -6,7 +6,6 @@ import { DefaultButton } from "../styles/auth.style";
 import AuthInput from "./AuthInput";
 
 const SignupForm = () => {
-    const API_URI = process.env.NEXT_PUBLIC_API_URI;
     const router = useRouter();
     
     const [nickname, setNickname] = useState('');
@@ -74,7 +73,7 @@ const SignupForm = () => {
 
         const fetchData = {email, password} //전송 데이터
 
-        axios.post(API_URI + '/users/create',fetchData) //회원가입 요청
+        axios.post('http://localhost:8080/users/create',fetchData) //회원가입 요청
         .then((res) => {
             if(res.status === 200){ //회원가입 성공시
                 router.push('/auth'); //루트 경로로 이동
