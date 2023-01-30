@@ -1,5 +1,8 @@
 # Todo App (클라이언트 구현 과제)
 
+## 전체 영상
+![20230130144955-4f2f9a04d9 gif-2-mp4 com](https://user-images.githubusercontent.com/98375183/215472135-189c0615-be87-43a4-bdcb-bcc83191d75d.gif)
+
 ## 실행 방법
 ```
 > server
@@ -16,9 +19,6 @@
 
 > npm run dev # http://localhost:3000
 ```
-
-## 전체 영상
-20230130144955-4f2f9a04d9.[gif-2-mp4.com].gif
 
 ## 실행배경
 > wanted 에서 제공하는 server API를 이용해 클라이언트의 todolist를 만드는 사전 과제를 완료하게 되었습니다.
